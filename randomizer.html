@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head lang ="en">
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	
+	<Title>Test Sample Randomizer</Title>
+    <style>
+        body{
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+        #container{
+            width: 100%;
+            height: 100%;
+        }
+        #boxes{
+            display: block;
+            background-color:cornflowerblue;
+            width:fit-content;
+        }
+        #boxes div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: solid 1px black;
+            margin:2em;
+        }
+        .row{
+            display:block;
+            width:fit-content;
+            height:3.4em;
+            margin-top: .2em;
+            margin-bottom: 0px;
+        }
+        .row div{
+            
+        }
+        .test{
+            width:3em;
+            height:3em;
+            background-color: white;
+        }
+        @media only screen and (max-width: 900px) {
+    body{
+        max-width: 100vw;
+        max-height: 100vh;
+    }
+    .row{
+        width:25em;
+    }
+	.test {
+	  width:2em;
+      height:1em;
+	}
+    #boxes div{
+        margin:.2em;
+    }
+}
+    </style>
+    <script>
+       function randomTest(num){
+        if(num > 29){
+            alert("Please select a number from 1-29");
+            return;
+        }
+            let slotNum = 0;
+            let slotArray = [];
+            for(i = 0; i < num; i++) {
+    slotNum = Math.floor(Math.random() * 30)+1;
+    if (slotArray.includes(slotNum)) {
+        i--; // Decrement i to make sure we generate new number
+    } 
+    else {
+        slotArray.push(slotNum);
+        document.getElementById(slotNum.toString()).style.backgroundColor = "#000000";
+        console.log(slotNum);
+    }
+}
+    }
+
+function clearResults(){
+    var divs = document.getElementsByClassName("test");
+    for(var i = 0; i < divs.length; i++){
+        divs[i].style.backgroundColor = "white";
+    }
+}
+        
+        
+        </script>
+</head>
+<body>
+    
+    <div id="container">
+    <div id="boxes">
+    <div id="row" class="row">
+    <div id="1"class="test">A1</div>
+    <div id="2"class="test">A2</div>
+    <div id="3"class="test">A3</div>
+    <div id="4"class="test">A4</div>
+    <div id="5"class="test">A5</div>
+    <div id="6"class="test">A6</div>
+    </div>
+    <div id="row" class="row">
+    <div id="7"class="test">B1</div>
+    <div id="8"class="test">B2</div>
+    <div id="9"class="test">B3</div>
+    <div id="10"class="test">B4</div>
+    <div id="11"class="test">B5</div>
+    <div id="12"class="test">B6</div>
+
+    </div>
+    <div id="row" class="row">
+    <div id="13"class="test">C1</div>
+    <div id="14"class="test">C2</div>
+    <div id="15"class="test">C3</div>
+    <div id="16"class="test">C4</div>
+    <div id="17"class="test">C5</div>
+    <div id="18"class="test">C6</div>
+    </div>
+    <div id="row" class="row">
+    <div id="19"class="test">D1</div>
+    <div id="20"class="test">D2</div>
+    <div id="21"class="test">D3</div>
+    <div id="22"class="test">D4</div>
+    <div id="23"class="test">D5</div>
+    <div id="24"class="test">D6</div>
+
+    </div>
+    <div id="row" class="row">
+    <div id="25"class="test">E1</div>
+    <div id="26"class="test">E2</div>
+    <div id="27"class="test">E3</div>
+    <div id="28"class="test">E4</div>
+    <div id="29"class="test">E5</div>
+    <div id="30"class="test">E6</div>
+
+    </div>
+   
+    <form onsubmit="clearResults(); randomTest(num.value); return false;">
+        <label for="fname">Number of Tests</label><br>
+        <input type="text" id="num" name="num" value=""><br>
+        <input type="submit" value="Submit">
+    </form>
+     
+    <input type="button" value="Clear" onclick="clearResults()"> 
+
+</div>
+</div>
+
+</body>
+</html>
